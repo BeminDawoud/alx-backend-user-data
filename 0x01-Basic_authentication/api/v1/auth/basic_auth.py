@@ -2,7 +2,7 @@
 """Basic authentication module for the API.
 """
 from .auth import Auth
-
+import base64
 
 class BasicAuth(Auth):
     """Basic authentication class.
