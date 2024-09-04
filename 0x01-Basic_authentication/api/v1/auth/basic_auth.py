@@ -51,7 +51,7 @@ class BasicAuth(Auth):
         if d is None or not isinstance(d, str):
             return (None, None)
         if ':' in d:
-            user_info = d.split(':')
+            user_info = d.split(':', 1)
             return (user_info[0], user_info[1])
         else:
             return (None, None)
