@@ -6,6 +6,7 @@ import base64
 from models.user import User
 from typing import Tuple, TypeVar
 
+
 class BasicAuth(Auth):
     """Basic authentication class.
     """
