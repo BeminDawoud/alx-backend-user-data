@@ -4,7 +4,7 @@
 from .auth import Auth
 import base64
 from models.user import User
-
+from typing import Tuple, TypeVar
 
 class BasicAuth(Auth):
     """Basic authentication class.
@@ -54,7 +54,7 @@ class BasicAuth(Auth):
             return (user_info[0], user_info[1])
         else:
             return (None, None)
-    
+
     def user_object_from_credentials(
             self,
             user_email: str,
