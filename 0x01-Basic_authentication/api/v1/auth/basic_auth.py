@@ -4,6 +4,7 @@
 from .auth import Auth
 import base64
 
+
 class BasicAuth(Auth):
     """Basic authentication class.
     """
