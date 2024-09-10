@@ -56,7 +56,7 @@ class DB:
         except (InvalidRequestError, NoResultFound):
             raise
 
-    def update_user(self, user_id, **kwargs) -> None:
+    def update_user(self, user_id: int, **kwargs) -> None:
         """Updates a user in the DB"""
         try:
             query = self._session.query(User)
