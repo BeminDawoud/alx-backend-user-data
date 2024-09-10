@@ -31,11 +31,11 @@ class Auth:
 
     def valid_login(self, email: str, password: str) -> bool:
         """Validates the user login"""
-        user = self._db.find_user_by(email=email)
-        if user:
-            if checkpw(user.hashed_password, _hash_password(password)):
-                return True
+        try:
+            user = self._db.find_user_by(email=email)
+            if user:
+                return checkpw(password.encode("utf-8"), user.hashed_password)
             else:
                 return False
-        else:
+        except Exception:
             return False
