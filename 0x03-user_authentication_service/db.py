@@ -56,7 +56,7 @@ class DB:
         except (InvalidRequestError, NoResultFound):
             raise
 
-    def update_user(self, user_id, **kwargs) -> User:
+    def update_user(self, user_id, **kwargs) -> None:
         """Updates a user in the DB"""
         query = self._session.query(User)
         user = query.filter(User.id == user_id).one()
@@ -65,4 +65,5 @@ class DB:
                 setattr(user, key, value)
             else:
                 raise ValueError
+        self._session.add(user)
         self._session.commit()
