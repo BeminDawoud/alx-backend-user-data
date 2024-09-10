@@ -10,12 +10,14 @@ AUTH = Auth()
 
 
 @app.route("/")
-def hello_world():
+def hello_world() -> str:
+    """Index route"""
     return jsonify({"message": "Bienvenue"})
 
 
 @app.route("/users", methods=["Post"], strict_slashes=False)
-def users():
+def users() -> str:
+    """Register a user"""
     email = request.form.get("email")
     password = request.form.get("password")
     try:
