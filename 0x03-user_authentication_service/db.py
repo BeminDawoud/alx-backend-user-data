@@ -58,12 +58,16 @@ class DB:
 
     def update_user(self, user_id, **kwargs) -> None:
         """Updates a user in the DB"""
-        query = self._session.query(User)
-        user = query.filter(User.id == user_id).one()
-        for key, value in kwargs.items():
-            if hasattr(user, key):
-                setattr(user, key, value)
-            else:
-                raise ValueError
-        self._session.add(user)
-        self._session.commit()
+        try:
+            query = self._session.query(User)
+            user = query.filter(User.id == user_id).one()
+            for key, value in kwargs.items():
+                if hasattr(user, key):
+                    setattr(user, key, value)
+                else:
+                    raise ValueError
+            self._session.add(user)
+            self._session.commit()
+        except Exception as e:
+            self._session.rollback()
+            raise e
